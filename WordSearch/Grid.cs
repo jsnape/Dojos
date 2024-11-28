@@ -21,13 +21,13 @@ public class Grid
         }
     }
 
-    public char this[int x, int y] => grid[x, y];
+    public char this[int x, int y] => grid[y, x];
 
-    public char this[(int x, int y) point] => grid[point.x, point.y];
+    public char this[(int x, int y) point] => grid[point.y, point.x];
 
-    public int Width => grid.GetLength(0);
+    public int Width => grid.GetLength(1);
 
-    public int Height => grid.GetLength(1);
+    public int Height => grid.GetLength(0);
 
     public bool FindWord(ReadOnlySpan<char> word, (int x, int y) startingPoint, Direction direction)
     {
