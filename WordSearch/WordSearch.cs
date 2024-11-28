@@ -18,6 +18,13 @@ public class WordSearch(string[] puzzleLines)
 
     public string[] Solve(IEnumerable<string> words)
     {
+        var solvedWords = FindWords(words);
+
+        return [];
+    }
+
+    public IEnumerable<SolvedWord> FindWords(IEnumerable<string> words)
+    {
         // For each word, find all the points in the grid with the first letter of the word
         var startingPoints = FindStartingPoints(words);
 
@@ -26,16 +33,15 @@ public class WordSearch(string[] puzzleLines)
         {
             var (word, x, y) = startingPoint;
 
-            //foreach (var direction in Direction.All)
-            //{
-            if (this.grid.FindWord(word, (x, y), Direction.East))
+            foreach (int direction in Enum.GetValues(typeof(Direction)))
             {
-                break;
+                if (this.grid.FindWord(word, (x, y), (Direction)direction))
+                {
+                    yield return new SolvedWord(word, new Cell(x, y), (Direction)direction);
+                    break;
+                }
             }
-            //}
         }
-
-        return [];
     }
 
     public IEnumerable<(string word, int x, int y)> FindStartingPoints(IEnumerable<string> words)

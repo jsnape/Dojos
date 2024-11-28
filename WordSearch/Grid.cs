@@ -39,6 +39,12 @@ public class Grid
         {
             nextPoint = nextPoint.Move(direction);
 
+            if (!IsInside(nextPoint))
+            {
+                return false;
+
+            }
+
             if (this[nextPoint] != word[i])
             {
                 return false;
@@ -47,6 +53,9 @@ public class Grid
 
         return true;
     }
+
+    public bool IsInside((int x, int y) nextPoint) => 
+        0 <= nextPoint.x && nextPoint.x < Width && 0 <= nextPoint.y && nextPoint.y < Height;
 
     public override string ToString()
     {

@@ -29,13 +29,13 @@ public class WordSearchFacts
 
         (string,int,int)[] expectedPoints = 
         [
-            ("RUBY", 0, 3),
-            ("RUBY", 0, 5),
-            ("RUBY", 1, 6),
-            ("RUBY", 1, 9),
-            ("RUBY", 2, 0),
-            ("RUBY", 5, 4),
-            ("RUBY", 9, 3)
+            ("RUBY", 3, 0),
+            ("RUBY", 5, 0),
+            ("RUBY", 6, 1),
+            ("RUBY", 9, 1),
+            ("RUBY", 0, 2),
+            ("RUBY", 4, 5),
+            ("RUBY", 3, 9)
         ];
 
         foreach (var point in expectedPoints)
