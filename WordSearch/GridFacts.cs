@@ -4,7 +4,14 @@ namespace WordSearch;
 
 public class GridFacts
 {
-    private readonly Grid target = new(2, 3);
+    private static readonly string[] gridLines =
+    [
+        "AB",
+        "CD",
+        "EF",
+    ];
+
+    private readonly Grid target = new(gridLines);
 
     [Fact]
     public void CanCreateGrid()
