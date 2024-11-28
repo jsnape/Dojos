@@ -5,7 +5,7 @@ namespace WordSearch;
 
 public class WordSearchSpecs
 {
-    public string[] PuzzleLines =
+    public static string[] PuzzleLines =
     [
         "UEWRTRBHCD",
         "CXGZUWRYER",
@@ -19,9 +19,9 @@ public class WordSearchSpecs
         "YBURPZUXMS",
     ];
 
-    public string[] Words = ["RUBY", "DAN", "ROCKS", "MATZ"];
+    public static string[] Words = ["RUBY", "DAN", "ROCKS", "MATZ"];
 
-    public string[] SolvedLines =
+    public static string[] SolvedLines =
     [
         "+++R++++++",
         "++++U+++++",
