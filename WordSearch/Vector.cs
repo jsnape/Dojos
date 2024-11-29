@@ -35,4 +35,23 @@ public record Vector(int DX, int DY)
 
         _ => throw new ArgumentOutOfRangeException(nameof(Vector)),
     };
+
+    public static Vector Offset(Direction direction) => direction switch
+    {
+        Direction.None => new Vector(0, 0),
+
+        Direction.North => new Vector(0, -1),
+        Direction.South => new Vector(0, 1),
+
+        Direction.East => new Vector(1, 0),
+        Direction.West => new Vector(-1, 0),
+
+        Direction.NorthEast => new Vector(1, -1),
+        Direction.SouthEast => new Vector(1, 1),
+
+        Direction.NorthWest => new Vector(-1, -1),
+        Direction.SouthWest => new Vector(-1, 1),
+
+        _ => throw new ArgumentOutOfRangeException(nameof(direction)),
+    };
 }

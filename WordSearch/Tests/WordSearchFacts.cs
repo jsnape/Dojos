@@ -27,15 +27,15 @@ public class WordSearchFacts
     {
         var actualPoints = target.FindStartingPoints(["RUBY"]).ToArray();
 
-        (string, int, int)[] expectedPoints =
+        (string, Cell)[] expectedPoints =
         [
-            ("RUBY", 3, 0),
-            ("RUBY", 5, 0),
-            ("RUBY", 6, 1),
-            ("RUBY", 9, 1),
-            ("RUBY", 0, 2),
-            ("RUBY", 4, 5),
-            ("RUBY", 3, 9)
+            ("RUBY", new(3, 0)),
+            ("RUBY", new(5, 0)),
+            ("RUBY", new(6, 1)),
+            ("RUBY", new(9, 1)),
+            ("RUBY", new(0, 2)),
+            ("RUBY", new(4, 5)),
+            ("RUBY", new(3, 9)),
         ];
 
         foreach (var point in expectedPoints)

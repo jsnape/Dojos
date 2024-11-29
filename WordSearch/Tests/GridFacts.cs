@@ -34,16 +34,16 @@ public class GridFacts
 
     [Theory]
     [MemberData(nameof(GetKnownWords))]
-    public void CanFindWord(string word, (int x, int y) point, Direction direction)
+    public void CanFindWord(string word, Cell cell, Direction direction)
     {
-        Assert.True(target.FindWord(word, point, direction));
+        Assert.True(target.FindWord(word, cell, direction));
     }
 
     public static IEnumerable<object[]> GetKnownWords()
     {
-        yield return new object[] { "ABC", (0, 0), Direction.East };
-        yield return new object[] { "GHI", (0, 1), Direction.East };
-        yield return new object[] { "FLR", (5, 0), Direction.South };
-        yield return new object[] { "DWPIB", (5, 4), Direction.NorthWest };
+        yield return new object[] { "ABC", new Cell(0, 0), Direction.East };
+        yield return new object[] { "GHI", new Cell(0, 1), Direction.East };
+        yield return new object[] { "FLR", new Cell(5, 0), Direction.South };
+        yield return new object[] { "DWPIB", new Cell(5, 4), Direction.NorthWest };
     }
 }

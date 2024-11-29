@@ -59,4 +59,11 @@ public class VectorFacts
         .Classify(x != 0 && y == 0, "Horizontal vector")
         .Classify(x != 0 && y != 0, "Diagonal vector");
     }
+
+    [Property]
+    public Property OffSetIsCorrect(Direction direction)
+    {
+        var vector = Vector.Offset(direction);
+        return (vector.Direction == direction).ToProperty();
+    }
 }

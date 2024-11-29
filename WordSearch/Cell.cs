@@ -2,6 +2,8 @@
 
 public record Cell(int X, int Y)
 {
+    public static Cell operator+(Cell c, Vector v) => new(c.X + v.DX, c.Y + v.DY);
+
     public Direction DirectionTo(Cell other) => (X, Y) switch
     {
         _ when X == other.X && Y < other.Y => Direction.South,
@@ -18,4 +20,6 @@ public record Cell(int X, int Y)
     };
 
     public Vector DistanceTo(Cell other) => new(other.X - X, other.Y - Y);
+
+    public Cell Move(Direction direction) => this + Vector.Offset(direction);
 }

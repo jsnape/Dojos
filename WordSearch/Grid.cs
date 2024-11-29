@@ -23,13 +23,13 @@ public class Grid
 
     public char this[int x, int y] => grid[y, x];
 
-    public char this[(int x, int y) point] => grid[point.y, point.x];
+    public char this[Cell cell] => grid[cell.Y, cell.X];
 
     public int Width => grid.GetLength(1);
 
     public int Height => grid.GetLength(0);
 
-    public bool FindWord(ReadOnlySpan<char> word, (int x, int y) startingPoint, Direction direction)
+    public bool FindWord(ReadOnlySpan<char> word, Cell startingPoint, Direction direction)
     {
         Debug.Assert(this[startingPoint] == word[0]);
 
@@ -54,8 +54,8 @@ public class Grid
         return true;
     }
 
-    public bool IsInside((int x, int y) nextPoint) => 
-        0 <= nextPoint.x && nextPoint.x < Width && 0 <= nextPoint.y && nextPoint.y < Height;
+    public bool IsInside(Cell cell) => 
+        0 <= cell.X && cell.X < Width && 0 <= cell.Y && cell.Y < Height;
 
     public override string ToString()
     {

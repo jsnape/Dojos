@@ -36,20 +36,20 @@ public class WordSearch(string[] puzzleLines)
         // For each found point, check if the remainder of the word exists in any of the 8 directions
         foreach (var startingPoint in startingPoints)
         {
-            var (word, x, y) = startingPoint;
+            var (word, cell) = startingPoint;
 
             foreach (int direction in Enum.GetValues(typeof(Direction)))
             {
-                if (this.grid.FindWord(word, (x, y), (Direction)direction))
+                if (this.grid.FindWord(word, cell, (Direction)direction))
                 {
-                    yield return new SolvedWord(word, new Cell(x, y), (Direction)direction);
+                    yield return new SolvedWord(word, cell, (Direction)direction);
                     break;
                 }
             }
         }
     }
 
-    public IEnumerable<(string word, int x, int y)> FindStartingPoints(IEnumerable<string> words)
+    public IEnumerable<(string word, Cell cell)> FindStartingPoints(IEnumerable<string> words)
     {
         foreach (var word in words) 
         {
@@ -61,7 +61,7 @@ public class WordSearch(string[] puzzleLines)
                 {
                     if (grid[x, y] == firstLetter)
                     {
-                        yield return (word, x, y);
+                        yield return (word, new(x, y));
                     }
                 }
             }
