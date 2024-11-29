@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace WordSearch;
+namespace WordSearch.Tests;
 
 public class GridFacts
 {
@@ -30,10 +30,7 @@ public class GridFacts
     [InlineData(1, 0, 'B')]
     [InlineData(0, 1, 'G')]
     [InlineData(5, 2, 'R')]
-    public void CanGetValueAtCoordinate(int x, int y, char value)
-    {
-        Assert.True(target[x, y] == value);
-    }
+    public void CanGetValueAtCoordinate(int x, int y, char value) => Assert.True(target[x, y] == value);
 
     [Theory]
     [MemberData(nameof(GetKnownWords))]

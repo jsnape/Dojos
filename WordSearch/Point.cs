@@ -1,16 +1,6 @@
 ﻿namespace WordSearch;
 
-public enum Direction
-{
-    North,
-    NorthEast,
-    East,
-    SouthEast,
-    South,
-    SouthWest,
-    West,
-    NorthWest,
-}
+
 
 public static class PointExtensions
 {

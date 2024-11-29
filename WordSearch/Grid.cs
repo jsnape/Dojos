@@ -73,5 +73,10 @@ public class Grid
 
         return sb.ToString();
     }
+
+    internal object Clone(Func<(int x, int y), char, char> selector)
+    {
+        throw new NotImplementedException();
+    }
 }
 

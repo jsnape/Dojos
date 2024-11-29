@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace WordSearch;
+namespace WordSearch.Tests;
 
 public class WordSearchFacts
 {
@@ -27,7 +27,7 @@ public class WordSearchFacts
     {
         var actualPoints = target.FindStartingPoints(["RUBY"]).ToArray();
 
-        (string,int,int)[] expectedPoints = 
+        (string, int, int)[] expectedPoints =
         [
             ("RUBY", 3, 0),
             ("RUBY", 5, 0),

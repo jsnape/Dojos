@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace WordSearch;
+namespace WordSearch.Tests;
 
 public class WordSearchSpecs
 {

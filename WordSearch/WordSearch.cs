@@ -1,6 +1,7 @@
 ﻿
 
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 namespace WordSearch;
 
@@ -19,6 +20,10 @@ public class WordSearch(string[] puzzleLines)
     public string[] Solve(IEnumerable<string> words)
     {
         var solvedWords = FindWords(words);
+
+        // Clone the grid but with all cells as '+' not in one of the solved words
+        var solvedGrid = grid.Clone(
+            ((int x, int y) point, char value) => solvedWords.Any(w => w.ContainsPoint(point)) ? value : '+');
 
         return [];
     }
