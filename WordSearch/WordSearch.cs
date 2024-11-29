@@ -6,10 +6,9 @@ using System.Net.NetworkInformation;
 namespace WordSearch;
 
 
-
-public class WordSearch(string[] puzzleLines)
+public class WordSearch(string[] PuzzleLines)
 {
-    private readonly Grid grid = new(puzzleLines);
+    private readonly Grid grid = new(PuzzleLines);
 
     public static string[] Solve(string[] puzzleLines, IEnumerable<string> words)
     {
@@ -23,9 +22,9 @@ public class WordSearch(string[] puzzleLines)
 
         // Clone the grid but with all cells as '+' not in one of the solved words
         var solvedGrid = grid.Clone(
-            ((int x, int y) point, char value) => solvedWords.Any(w => w.ContainsPoint(point)) ? value : '+');
+            (Cell cell, char value) => solvedWords.Any(w => w.ContainsPoint(cell)) ? value : '+');
 
-        return [];
+        return solvedGrid.Lines.ToArray();
     }
 
     public IEnumerable<SolvedWord> FindWords(IEnumerable<string> words)

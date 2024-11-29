@@ -57,26 +57,42 @@ public class Grid
     public bool IsInside(Cell cell) => 
         0 <= cell.X && cell.X < Width && 0 <= cell.Y && cell.Y < Height;
 
-    public override string ToString()
+    public IEnumerable<string> Lines
     {
-        var sb = new StringBuilder();
+        get
+        {
+            var sb = new StringBuilder(this.Width);
+
+            for (var y = 0; y < Height; ++y)
+            {
+                for (var x = 0; x < Width; ++x)
+                {
+                    sb.Append(grid[x, y]);
+                }
+
+                yield return sb.ToString();
+                sb.Clear();
+            }
+        }
+    }
+
+    public override string ToString() => string.Join(Environment.NewLine, this.Lines);
+
+    public Grid Clone(Func<Cell, char, char> selector)
+    {
+        var newGrid = new char[Height, Width];
 
         for (var y = 0; y < Height; ++y)
         {
             for (var x = 0; x < Width; ++x)
             {
-                sb.Append(grid[x, y]);
+                newGrid[y, x] = selector(new Cell(x, y), grid[y, x]);
             }
-
-            sb.AppendLine();
         }
 
-        return sb.ToString();
+        return new Grid(newGrid);
     }
 
-    internal object Clone(Func<(int x, int y), char, char> selector)
-    {
-        throw new NotImplementedException();
-    }
+    private Grid(char[,] grid) => this.grid = grid;
 }
 

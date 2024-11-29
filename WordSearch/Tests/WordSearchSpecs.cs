@@ -5,7 +5,7 @@ namespace WordSearch.Tests;
 
 public class WordSearchSpecs
 {
-    public static string[] PuzzleLines =
+    public readonly static string[] PuzzleLines =
     [
         "UEWRTRBHCD",
         "CXGZUWRYER",
@@ -19,9 +19,9 @@ public class WordSearchSpecs
         "YBURPZUXMS",
     ];
 
-    public static string[] Words = ["RUBY", "DAN", "ROCKS", "MATZ"];
+    public readonly static string[] Words = ["RUBY", "DAN", "ROCKS", "MATZ"];
 
-    public static string[] SolvedLines =
+    public readonly static string[] SolvedLines =
     [
         "+++R++++++",
         "++++U+++++",
