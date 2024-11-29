@@ -1,9 +1,4 @@
-﻿
-
-using System.Diagnostics;
-using System.Net.NetworkInformation;
-
-namespace WordSearch;
+﻿namespace WordSearch;
 
 
 public class WordSearch(string[] PuzzleLines)
@@ -18,11 +13,12 @@ public class WordSearch(string[] PuzzleLines)
 
     public string[] Solve(IEnumerable<string> words)
     {
-        var solvedWords = FindWords(words);
+        var solvedWords = FindWords(words).ToArray();
+        var solvedCells = solvedWords.SelectMany(x => x.Cells).Distinct().ToArray();
 
         // Clone the grid but with all cells as '+' not in one of the solved words
         var solvedGrid = grid.Clone(
-            (Cell cell, char value) => solvedWords.Any(w => w.ContainsPoint(cell)) ? value : '+');
+            (Cell cell, char value) => solvedCells.Any(x => x.cell == cell) ? value : '+');
 
         return solvedGrid.Lines.ToArray();
     }

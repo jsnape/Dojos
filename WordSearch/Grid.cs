@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace WordSearch;
-
 
 public class Grid
 {
@@ -67,7 +67,7 @@ public class Grid
             {
                 for (var x = 0; x < Width; ++x)
                 {
-                    sb.Append(grid[x, y]);
+                    sb.Append(grid[y, x]);
                 }
 
                 yield return sb.ToString();

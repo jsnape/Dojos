@@ -46,4 +46,11 @@ public class GridFacts
         yield return new object[] { "FLR", new Cell(5, 0), Direction.South };
         yield return new object[] { "DWPIB", new Cell(5, 4), Direction.NorthWest };
     }
+
+    [Fact]
+    public void IdentityCloneIsSame()
+    {
+        var cloned = target.Clone((cell, value) => value);
+        Assert.Equal(target.Lines, cloned.Lines);
+    }
 }

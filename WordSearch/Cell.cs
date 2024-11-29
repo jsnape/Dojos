@@ -1,5 +1,8 @@
-﻿namespace WordSearch;
+﻿using System.Diagnostics;
 
+namespace WordSearch;
+
+[DebuggerDisplay("{X},{Y}")]
 public record Cell(int X, int Y)
 {
     public static Cell operator+(Cell c, Vector v) => new(c.X + v.DX, c.Y + v.DY);

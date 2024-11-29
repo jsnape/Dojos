@@ -1,4 +1,6 @@
-﻿namespace WordSearch;
+﻿using System.Diagnostics;
+
+namespace WordSearch;
 
 public enum Direction
 {
@@ -13,6 +15,7 @@ public enum Direction
     NorthWest,
 }
 
+[DebuggerDisplay("{DX},{DY}")]
 public record Vector(int DX, int DY)
 {
     public bool IsZero => DX == 0 && DY == 0;
